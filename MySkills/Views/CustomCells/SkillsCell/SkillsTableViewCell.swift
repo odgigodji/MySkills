@@ -128,6 +128,12 @@ extension SkillsTableViewCell: MainTableViewControllerDelegate {
     func editingDidTapped() {
         if editMode == true {
             settingsButton.setBackgroundImage(UIImage(systemName: "pencil"), for: .normal)
+            if skillsNames.contains("+") {
+                skillsNames.removeAll { string in
+                    string == "+"
+                }
+                collectionView.reloadData()
+            }
             editMode = false
         } else {
             settingsButton.setBackgroundImage(UIImage(systemName: "checkmark.circle"), for: .normal)
