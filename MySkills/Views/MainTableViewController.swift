@@ -15,7 +15,6 @@ protocol SkillsViewProtocol: AnyObject {
 protocol MainTableViewControllerDelegate: AnyObject {
     func dataDidUpdate(newData: [String])
     func editingDidTapped()
-    func didPressPlus()
 }
 
 class MainTableViewController: UITableViewController {
@@ -65,6 +64,7 @@ class MainTableViewController: UITableViewController {
         default:
             let cell = tableView.dequeueReusableCell(withIdentifier: SkillsTableViewCell.identifier, for: indexPath) as! SkillsTableViewCell
             delegate = cell
+            cell.delegate = self
             
             cell.isUserInteractionEnabled = true
             cell.settingsButton.addTarget(self, action: #selector(tapButton), for: .touchUpInside)
@@ -81,14 +81,7 @@ class MainTableViewController: UITableViewController {
         
         delegate?.editingDidTapped()
         
-//        showAlertWithTextField(title: "Добавление навыка", message: "Введите название навыка которым вы владеете", viewController: self) { text in
-////            print(text!)
-//            guard let text = text else {
-//               return
-//            }
-//            self.presenter.addSkillButtonTapped(name: text)
-//            self.tableView.reloadData()
-//        }
+
     }
 
     
@@ -149,5 +142,17 @@ extension MainTableViewController: SkillsViewProtocol {
         print("VIEW: showAddskilALERT")
     }
     
+}
+
+extension MainTableViewController: SkillsTableViewCellProtocol {
+    func plusDidTapped() {
+        showAlertWithTextField(title: "Добавление навыка", message: "Введите название навыка которым вы владеете", viewController: self) { text in
+            guard let text = text else {
+                return
+            }
+            self.presenter.addSkillButtonTapped(name: text)
+            self.tableView.reloadData()
+        }
+    }
     
 }

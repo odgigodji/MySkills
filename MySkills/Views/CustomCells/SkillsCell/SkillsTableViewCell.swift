@@ -7,10 +7,15 @@
 
 import UIKit
 
+protocol SkillsTableViewCellProtocol: AnyObject {
+    func plusDidTapped()
+}
+
 class SkillsTableViewCell: UITableViewCell {
     
     var skillsNames: [String] = []
     static let identifier = "SkillsTableViewCell"
+    weak var delegate: SkillsTableViewCellProtocol?
 
     let headerLabel: UILabel = {
         let label = UILabel()
@@ -111,7 +116,7 @@ extension SkillsTableViewCell: UICollectionViewDelegateFlowLayout, UICollectionV
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print(skillsNames[indexPath.row])
         if skillsNames[indexPath.row] == "+" {
-            print("ADD ELEM")
+            delegate?.plusDidTapped()
         }
     }
 }
@@ -126,9 +131,5 @@ extension SkillsTableViewCell: MainTableViewControllerDelegate {
     func dataDidUpdate(newData: [String]) {
         skillsNames = newData
         collectionView.reloadData()
-    }
-    
-    func didPressPlus() {
-        
     }
 }
