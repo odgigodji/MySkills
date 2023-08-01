@@ -7,12 +7,14 @@
 
 import UIKit
 
+
 protocol SkillsTableViewCellProtocol: AnyObject {
     func plusDidTapped()
 }
 
 class SkillsTableViewCell: UITableViewCell {
     
+    var editMode = false
     var skillsNames: [String] = []
     static let identifier = "SkillsTableViewCell"
     weak var delegate: SkillsTableViewCellProtocol?
@@ -124,6 +126,7 @@ extension SkillsTableViewCell: UICollectionViewDelegateFlowLayout, UICollectionV
 
 extension SkillsTableViewCell: MainTableViewControllerDelegate {
     func editingDidTapped() {
+        settingsButton.setBackgroundImage(UIImage(systemName: "checkmark.circle"), for: .normal)
         skillsNames.append("+")
         collectionView.reloadData()
     }
