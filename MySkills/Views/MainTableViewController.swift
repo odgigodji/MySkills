@@ -146,6 +146,11 @@ extension MainTableViewController: SkillsViewProtocol {
 }
 
 extension MainTableViewController: SkillsTableViewCellProtocol {
+    func removeSkill(name: String) {
+        self.presenter.removeSkillButtonTapped(skill: name)
+        self.tableView.reloadData()
+    }
+    
     func plusDidTapped() {
         showAlertWithTextField(title: "Добавление навыка", message: "Введите название навыка которым вы владеете", viewController: self) { text in
             guard let text = text else {
@@ -155,5 +160,6 @@ extension MainTableViewController: SkillsTableViewCellProtocol {
             self.tableView.reloadData()
         }
     }
+    
     
 }

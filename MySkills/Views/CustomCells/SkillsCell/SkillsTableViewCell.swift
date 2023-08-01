@@ -10,6 +10,7 @@ import UIKit
 
 protocol SkillsTableViewCellProtocol: AnyObject {
     func plusDidTapped()
+    func removeSkill(name: String)
 }
 
 class SkillsTableViewCell: UITableViewCell {
@@ -106,9 +107,7 @@ extension SkillsTableViewCell: UICollectionViewDelegateFlowLayout, UICollectionV
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SkillCollectionViewCell.identifier, for: indexPath) as! SkillCollectionViewCell
         if editMode == true {
-            if cell.titleLabel.text != "+" {
-                cell.titleLabel.text = skillsNames[indexPath.item] + " ⛌"
-            }
+            cell.titleLabel.text = skillsNames[indexPath.item] + " ⛌"
         } else {
             cell.titleLabel.text = skillsNames[indexPath.item]
         }
@@ -125,6 +124,8 @@ extension SkillsTableViewCell: UICollectionViewDelegateFlowLayout, UICollectionV
         print(skillsNames[indexPath.row])
         if skillsNames[indexPath.row] == "+" {
             delegate?.plusDidTapped()
+        } else if editMode == true {
+            delegate?.removeSkill(name: skillsNames[indexPath.row])
         }
     }
 }
