@@ -126,9 +126,17 @@ extension SkillsTableViewCell: UICollectionViewDelegateFlowLayout, UICollectionV
 
 extension SkillsTableViewCell: MainTableViewControllerDelegate {
     func editingDidTapped() {
-        settingsButton.setBackgroundImage(UIImage(systemName: "checkmark.circle"), for: .normal)
-        skillsNames.append("+")
-        collectionView.reloadData()
+        if editMode == true {
+            settingsButton.setBackgroundImage(UIImage(systemName: "pencil"), for: .normal)
+            editMode = false
+        } else {
+            settingsButton.setBackgroundImage(UIImage(systemName: "checkmark.circle"), for: .normal)
+            if !skillsNames.contains("+") {
+                skillsNames.append("+")
+            }
+            collectionView.reloadData()
+            editMode = true
+        }
     }
     
     func dataDidUpdate(newData: [String]) {
