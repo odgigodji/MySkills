@@ -16,6 +16,8 @@
 		FA46D3162A79031D0020BC65 /* SkillsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA46D3152A79031D0020BC65 /* SkillsPresenter.swift */; };
 		FA46D31C2A790B440020BC65 /* SkillsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA46D31B2A790B440020BC65 /* SkillsManager.swift */; };
 		FA46D31E2A7914810020BC65 /* SkillsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA46D31D2A7914810020BC65 /* SkillsViewController.swift */; };
+		FA46D3202A7924850020BC65 /* MainTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA46D31F2A7924840020BC65 /* MainTableViewController.swift */; };
+		FA46D3222A792C1B0020BC65 /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA46D3212A792C1B0020BC65 /* CustomCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +32,8 @@
 		FA46D3152A79031D0020BC65 /* SkillsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillsPresenter.swift; sourceTree = "<group>"; };
 		FA46D31B2A790B440020BC65 /* SkillsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillsManager.swift; sourceTree = "<group>"; };
 		FA46D31D2A7914810020BC65 /* SkillsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillsViewController.swift; sourceTree = "<group>"; };
+		FA46D31F2A7924840020BC65 /* MainTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTableViewController.swift; sourceTree = "<group>"; };
+		FA46D3212A792C1B0020BC65 /* CustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +80,8 @@
 			children = (
 				FA46D3032A7900BF0020BC65 /* MainViewController.swift */,
 				FA46D31D2A7914810020BC65 /* SkillsViewController.swift */,
+				FA46D31F2A7924840020BC65 /* MainTableViewController.swift */,
+				FA46D3212A792C1B0020BC65 /* CustomCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -182,6 +188,8 @@
 				FA46D31C2A790B440020BC65 /* SkillsManager.swift in Sources */,
 				FA46D3042A7900BF0020BC65 /* MainViewController.swift in Sources */,
 				FA46D3142A7902980020BC65 /* Assembly.swift in Sources */,
+				FA46D3222A792C1B0020BC65 /* CustomCell.swift in Sources */,
+				FA46D3202A7924850020BC65 /* MainTableViewController.swift in Sources */,
 				FA46D31E2A7914810020BC65 /* SkillsViewController.swift in Sources */,
 				FA46D3002A7900BF0020BC65 /* AppDelegate.swift in Sources */,
 				FA46D3022A7900BF0020BC65 /* SceneDelegate.swift in Sources */,

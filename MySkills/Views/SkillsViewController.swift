@@ -20,7 +20,7 @@ class SkillsViewController: UIViewController, SkillsViewProtocol {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .green
-        
+//        presenter.viewDidLoad()
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(viewTapped))
         view.isUserInteractionEnabled = true
@@ -32,8 +32,9 @@ class SkillsViewController: UIViewController, SkillsViewProtocol {
     }
     
     func showSkills(_ skills: Set<String>) {
-//        self.skills = skills.sorted() // Сортируем, чтобы отобразить в алфавитном порядке
+        self.skills = skills // Сортируем, чтобы отобразить в алфавитном порядке
 //        tableView.reloadData()
+        print(self.skills)
     }
     
     func showAddSkillAlert() {

@@ -19,8 +19,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window?.windowScene = windowScene
         
         assembly.createMainPresenter()
-        window?.rootViewController = assembly.view
+//        window?.rootViewController = assembly.view
 //        window?.rootViewController = MainViewController()
+//        window?.rootViewController = assembly.mainView
+        let nc = UINavigationController(rootViewController: MainTableViewController())
+        window?.rootViewController = nc
+        
         
         window?.makeKeyAndVisible()
     }

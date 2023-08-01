@@ -9,16 +9,17 @@ import Foundation
 
 class MainAssembly {
     
-    var view                = SkillsViewController()
+    var skillsView          = SkillsViewController()
     let presenter           = SkillsPresenter()
     let skillsModel         = SkillsModel()
     
+//    var mainView            = MainViewController()
+    
     func createMainPresenter() {
-//        view.output                 = presenter
-        view.presenter = presenter
-        
-//        presenter.view              = view
-        presenter.skillsView = view
+        skillsView.presenter = presenter
+        presenter.skillsView = skillsView
         presenter.model      = skillsModel
+        
+//        mainView.skillsViewController        = skillsView
     }
 }
