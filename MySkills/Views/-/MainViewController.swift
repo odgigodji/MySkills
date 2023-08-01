@@ -7,7 +7,6 @@
 
 import UIKit
 
-/*
 class MainViewController: UIViewController {
 
 //    var output: MainPresenterOutput!
@@ -97,43 +96,40 @@ class MainViewController: UIViewController {
 //        //        traineeDirections = output.getTraineeDirection()
 //    }
 //}
-*/
 
 
 
-/*
-class MainViewController: UIViewController {
-    // Ваши другие представления (например, другие UIViews или UIStackViews) здесь
-    
-    private lazy var skillsContainerView: UIView = {
-        let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-    }()
-    
-    var skillsViewController: SkillsViewController!
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        view.backgroundColor = .yellow
-        setupSkillsViewController()
-        // Настройка остальных представлений (если есть)
-    }
-    
-    private func setupSkillsViewController() {
-//        skillsViewController = SkillsViewController()
-        view.addSubview(skillsContainerView)
-        skillsContainerView.addSubview(skillsViewController.view)
-        
-        NSLayoutConstraint.activate([
-            skillsViewController.view.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50),
-            skillsViewController.view.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            skillsViewController.view.topAnchor.constraint(equalTo: view.topAnchor),
-            skillsViewController.view.bottomAnchor.constraint(equalTo: view.bottomAnchor)
-        ])
-        
-//        skillsViewController.didMove(toParent: self)
-    }
-}
-*/
-
+//class MainViewController: UIViewController {
+//    // Ваши другие представления (например, другие UIViews или UIStackViews) здесь
+//
+//    private lazy var skillsContainerView: UIView = {
+//        let view = UIView()
+//        view.translatesAutoresizingMaskIntoConstraints = false
+//        return view
+//    }()
+//
+//    var skillsViewController: SkillsViewController!
+//
+//    override func viewDidLoad() {
+//        super.viewDidLoad()
+//        view.backgroundColor = .yellow
+//        setupSkillsViewController()
+//        // Настройка остальных представлений (если есть)
+//    }
+//
+//    private func setupSkillsViewController() {
+////        skillsViewController = SkillsViewController()
+//        view.addSubview(skillsContainerView)
+//        skillsContainerView.addSubview(skillsViewController.view)
+//
+//        NSLayoutConstraint.activate([
+//            skillsViewController.view.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50),
+//            skillsViewController.view.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+//            skillsViewController.view.topAnchor.constraint(equalTo: view.topAnchor),
+//            skillsViewController.view.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+//        ])
+//
+////        skillsViewController.didMove(toParent: self)
+//    }
+//}
+//

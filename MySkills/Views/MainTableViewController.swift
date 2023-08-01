@@ -18,8 +18,6 @@ class MainTableViewController: UITableViewController {
         tableView.register(SkillsTableViewCell.self, forCellReuseIdentifier: SkillsTableViewCell.identifier)
         
         tableView.isUserInteractionEnabled = true
-//        tableView.selectionStyle = .none
-//        tableView.sele
         
         tableView.separatorStyle = .none // Изменим стиль разделителя на "singleLine"
         tableView.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0) // Установим нулевой отступ разделител
@@ -48,13 +46,9 @@ class MainTableViewController: UITableViewController {
 
             return cell
         default:
-//        case 1:
+            //        case 1:
             let cell = tableView.dequeueReusableCell(withIdentifier: SkillsTableViewCell.identifier, for: indexPath) as! SkillsTableViewCell
             
-//            let tapGesture = UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapGestureRecognizer: tapGesture)
-//            tapGesture.cancelsTouchesInView = false
-//            cell.headerImageView.isUserInteractionEnabled = true
-//            cell.headerImageView.addGestureRecognizer(tapGesture)
             cell.isUserInteractionEnabled = true
             
             cell.headerImageView.addTarget(self, action: #selector(tapButton), for: .touchUpInside)
@@ -70,19 +64,16 @@ class MainTableViewController: UITableViewController {
     }
     
     @objc func tapButton() {
-        print("HER")
+        showAlertWithTextField(title: "Добавление навыка", message: "Введите название навыка которым вы владеете", viewController: self) { text in
+            print(text!)
+        }
+        
     }
-    
-//    @objc func imageTapped(tapGestureRecognizer: UITapGestureRecognizer) {
-//        // Выполните здесь необходимое действие при нажатии на изображение
-////        let tappedImage = tapGestureRecognizer.view as! UIImageView
-//        print("Изображение было нажато!")
-//    }
+
     
     func setupCustomTitle() {
         let titleLabel = UILabel()
         titleLabel.text = "Профиль"
-//        titleLabel.textColor = .black
         titleLabel.font = UIFont.boldSystemFont(ofSize: 16)
         titleLabel.sizeToFit()
         
@@ -97,49 +88,35 @@ class MainTableViewController: UITableViewController {
         }
     }
 
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
+ 
+    
+    //MARK: Logic
+    func showAlertWithTextField(title: String, message: String, viewController: UIViewController, completion: @escaping (String?) -> Void) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        
+        // Добавляем текстовое поле в алерт
+        alert.addTextField { textField in
+            textField.placeholder = "Введите название"
+        }
+        
+        // Добавляем кнопку "Отмена" с обработчиком действия
+        let cancelAction = UIAlertAction(title: "Отмена", style: .cancel) { _ in
+            completion(nil) // Вызываем обработчик с nil, чтобы указать, что пользователь отменил ввод
+        }
+        alert.addAction(cancelAction)
+        
+        // Добавляем кнопку "Добавить" с обработчиком действия
+        let addAction = UIAlertAction(title: "Добавить", style: .default) { _ in
+            if let textField = alert.textFields?.first, let text = textField.text {
+                completion(text) // Вызываем обработчик с введенным текстом
+            } else {
+                completion(nil) // Вызываем обработчик с nil, если текст не был введен
+            }
+        }
+        alert.addAction(addAction)
+        
+        viewController.present(alert, animated: true, completion: nil)
     }
-    */
 
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
