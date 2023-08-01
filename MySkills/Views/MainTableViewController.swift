@@ -123,7 +123,7 @@ class MainTableViewController: UITableViewController {
         let addAction = UIAlertAction(title: "Добавить", style: .default) { _ in
             if let textField = alert.textFields?.first, let text = textField.text {
                 completion(text)
-                self.delegate?.editingDidTapped()
+//                self.delegate?.editingDidTapped()
             } else {
                 completion(nil)
             }

@@ -58,7 +58,7 @@ class InfoTableViewCell: UITableViewCell {
         customImageView.image = UIImage(named: "imageName 1")
         titleLabel.text = "Иванов Иван Иванович"
         firstTextLabel.text = "Миддл опыт более 2х лет, работал над мобильным банком в Тинькове"
-        secondTextLabel.text = "Ростов на дону"
+        secondTextLabel.text = "Ростов На Дону"
         
         isUserInteractionEnabled = false
         
