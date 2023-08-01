@@ -105,13 +105,19 @@ extension SkillsTableViewCell: UICollectionViewDelegateFlowLayout, UICollectionV
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SkillCollectionViewCell.identifier, for: indexPath) as! SkillCollectionViewCell
-        cell.titleLabel.text = skillsNames[indexPath.item]
+        if editMode == true {
+            if cell.titleLabel.text != "+" {
+                cell.titleLabel.text = skillsNames[indexPath.item] + " ⛌"
+            }
+        } else {
+            cell.titleLabel.text = skillsNames[indexPath.item]
+        }
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let text = skillsNames[indexPath.item]
-        let width = text.size(withAttributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 16)]).width + 20
+        let width = text.size(withAttributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 16)]).width + (editMode == true ? 50 : 30)
         return CGSize(width: width, height: 44)
     }
     

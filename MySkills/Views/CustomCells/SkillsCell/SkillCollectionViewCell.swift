@@ -20,34 +20,36 @@ class SkillCollectionViewCell: UICollectionViewCell {
         return label
     }()
     
-    let crossButton: UIButton = {
-        let button = UIButton()
-        button.backgroundColor = .black
-        button.setBackgroundImage(UIImage(systemName: "delete.left"), for: .normal)
-        button.isUserInteractionEnabled = true
-        button.translatesAutoresizingMaskIntoConstraints = false
-        return button
-    }()
+//    let crossButton: UIButton = {
+//        let button = UIButton()
+////        button.isHidden = true
+//        button.setBackgroundImage(UIImage(systemName: "delete.left"), for: .normal)
+//        button.isUserInteractionEnabled = true
+//        button.translatesAutoresizingMaskIntoConstraints = false
+//        button.backgroundColor = .black
+//        return button
+//    }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        // Добавляем подвиды (subviews) в ячейку
         addSubview(titleLabel)
+//        addSubview(crossButton)
         
-        // Настраиваем ограничения (constraints) для titleLabel
         NSLayoutConstraint.activate([
             titleLabel.topAnchor.constraint(equalTo: topAnchor),
             titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
             titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
-            titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor)
+            titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor),
+            
+//            crossButton.topAnchor.constraint(equalTo: topAnchor),
+//            crossButton.leadingAnchor.constraint(equalTo: titleLabel.trailingAnchor, constant: 5),
+//            crossButton.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
         
-        // Настраиваем закругленные углы для ячейки
         layer.cornerRadius = 10
         clipsToBounds = true
         backgroundColor = .systemGray
-        
     }
     
     required init?(coder: NSCoder) {
