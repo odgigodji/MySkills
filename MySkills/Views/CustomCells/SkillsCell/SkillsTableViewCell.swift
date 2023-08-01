@@ -13,7 +13,9 @@ class SkillsTableViewCell: UITableViewCell {
 
     lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .horizontal
+        layout.scrollDirection = .vertical
+        layout.minimumInteritemSpacing = 5 // Убираем горизонтальные отступы между ячейками
+        layout.minimumLineSpacing = 10 // Задаем вертикальные отступы между ячейками
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.backgroundColor = .clear
@@ -24,11 +26,13 @@ class SkillsTableViewCell: UITableViewCell {
         return collectionView
     }()
     
+    
     var data: [String] = []
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
+        isUserInteractionEnabled = false
         // Добавляем подвиды (subviews) в ячейку
         addSubview(collectionView)
         
@@ -59,5 +63,12 @@ extension SkillsTableViewCell: UICollectionViewDelegateFlowLayout, UICollectionV
         return cell
     }
     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let text = data[indexPath.item]
+        let width = text.size(withAttributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 16)]).width + 20 // 20 - для добавления небольшого отступа
+        return CGSize(width: width, height: 44) // Задайте желаемую высоту ячейки
+    }
+    
     // ... Добавьте нужные методы UICollectionViewDelegateFlowLayout, если необходимо
 }
+

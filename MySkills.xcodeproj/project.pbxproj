@@ -20,6 +20,7 @@
 		FA46D3222A792C1B0020BC65 /* InfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA46D3212A792C1B0020BC65 /* InfoTableViewCell.swift */; };
 		FA46D3252A793AA30020BC65 /* SkillsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA46D3242A793AA30020BC65 /* SkillsTableViewCell.swift */; };
 		FA46D3272A79401E0020BC65 /* SkillCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA46D3262A79401E0020BC65 /* SkillCollectionViewCell.swift */; };
+		FA46D32B2A79430D0020BC65 /* LeftAlignedCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA46D32A2A79430D0020BC65 /* LeftAlignedCollectionViewFlowLayout.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		FA46D3212A792C1B0020BC65 /* InfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoTableViewCell.swift; sourceTree = "<group>"; };
 		FA46D3242A793AA30020BC65 /* SkillsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillsTableViewCell.swift; sourceTree = "<group>"; };
 		FA46D3262A79401E0020BC65 /* SkillCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillCollectionViewCell.swift; sourceTree = "<group>"; };
+		FA46D32A2A79430D0020BC65 /* LeftAlignedCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftAlignedCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,6 +133,7 @@
 			children = (
 				FA46D3242A793AA30020BC65 /* SkillsTableViewCell.swift */,
 				FA46D3262A79401E0020BC65 /* SkillCollectionViewCell.swift */,
+				FA46D32A2A79430D0020BC65 /* LeftAlignedCollectionViewFlowLayout.swift */,
 			);
 			path = SkillsCell;
 			sourceTree = "<group>";
@@ -222,6 +225,7 @@
 				FA46D3272A79401E0020BC65 /* SkillCollectionViewCell.swift in Sources */,
 				FA46D3222A792C1B0020BC65 /* InfoTableViewCell.swift in Sources */,
 				FA46D3202A7924850020BC65 /* MainTableViewController.swift in Sources */,
+				FA46D32B2A79430D0020BC65 /* LeftAlignedCollectionViewFlowLayout.swift in Sources */,
 				FA46D31E2A7914810020BC65 /* SkillsViewController.swift in Sources */,
 				FA46D3002A7900BF0020BC65 /* AppDelegate.swift in Sources */,
 				FA46D3022A7900BF0020BC65 /* SceneDelegate.swift in Sources */,

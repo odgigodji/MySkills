@@ -37,10 +37,18 @@ class SkillCollectionViewCell: UICollectionViewCell {
         // Настраиваем закругленные углы для ячейки
         layer.cornerRadius = 10
         clipsToBounds = true
-        backgroundColor = .blue // Здесь вы можете задать желаемый цвет фона для каждой ячейки в коллекции
+        backgroundColor = .systemGray // Здесь вы можете задать желаемый цвет фона для каждой ячейки в коллекции
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func preferredLayoutAttributesFitting(_ layoutAttributes: UICollectionViewLayoutAttributes) -> UICollectionViewLayoutAttributes {
+        let attributes = super.preferredLayoutAttributesFitting(layoutAttributes)
+        let targetSize = CGSize(width: layoutAttributes.frame.width, height: UIView.layoutFittingCompressedSize.height)
+        let size = titleLabel.sizeThatFits(targetSize)
+        attributes.frame.size.height = size.height
+        return attributes
     }
 }

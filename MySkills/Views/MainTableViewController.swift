@@ -47,7 +47,7 @@ class MainTableViewController: UITableViewController {
         default:
 //        case 1:
             let cell = tableView.dequeueReusableCell(withIdentifier: SkillsTableViewCell.identifier, for: indexPath) as! SkillsTableViewCell
-            cell.data = ["asdf", "21"]
+            cell.data = ["asdf", "21", "aasdkfjkjl", "kjkj", "asiii", "1234", "iii", "hfhasdf"]
             
             return cell
 //        default:
