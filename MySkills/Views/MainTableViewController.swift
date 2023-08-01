@@ -14,6 +14,7 @@ protocol SkillsViewProtocol: AnyObject {
 
 class MainTableViewController: UITableViewController {
     
+//    var skills = Set<String>()
     var presenter: SkillsPresenter!
 
     override func viewDidLoad() {
@@ -26,8 +27,11 @@ class MainTableViewController: UITableViewController {
         
         tableView.isUserInteractionEnabled = true
         
-        tableView.separatorStyle = .none // Изменим стиль разделителя на "singleLine"
-        tableView.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0) // Установим нулевой отступ разделител
+        tableView.separatorStyle = .none
+        tableView.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        
+//        skills =
+        
     }
     
     // MARK: - Table view data source
@@ -60,7 +64,8 @@ class MainTableViewController: UITableViewController {
             
             cell.headerImageView.addTarget(self, action: #selector(tapButton), for: .touchUpInside)
             
-            cell.skillsNames = ["asdf", "21", "aasdkfjkjl", "kjkj", "asiii", "1234", "iii", "hfhasdf"]
+            cell.skillsNames = Array(presenter.model.getAllSkills())
+//            cell.skillsNames = ["asdf", "21", "aasdkfjkjl", "kjkj", "asiii", "1234", "iii", "hfhasdf"]
             
             return cell
 //        default:
@@ -71,10 +76,11 @@ class MainTableViewController: UITableViewController {
     }
     
     @objc func tapButton() {
+        print("TAP BUTTON ON VC")
         showAlertWithTextField(title: "Добавление навыка", message: "Введите название навыка которым вы владеете", viewController: self) { text in
-            print(text!)
+//            print(text!)
+            self.presenter.addSkillButtonTapped(name: text!)
         }
-        
     }
 
     
@@ -94,34 +100,29 @@ class MainTableViewController: UITableViewController {
         default: return 500
         }
     }
-
  
     
     //MARK: Logic
     func showAlertWithTextField(title: String, message: String, viewController: UIViewController, completion: @escaping (String?) -> Void) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         
-        // Добавляем текстовое поле в алерт
         alert.addTextField { textField in
             textField.placeholder = "Введите название"
         }
         
-        // Добавляем кнопку "Отмена" с обработчиком действия
         let cancelAction = UIAlertAction(title: "Отмена", style: .cancel) { _ in
-            completion(nil) // Вызываем обработчик с nil, чтобы указать, что пользователь отменил ввод
+            completion(nil)
         }
         alert.addAction(cancelAction)
         
-        // Добавляем кнопку "Добавить" с обработчиком действия
         let addAction = UIAlertAction(title: "Добавить", style: .default) { _ in
             if let textField = alert.textFields?.first, let text = textField.text {
-                completion(text) // Вызываем обработчик с введенным текстом
+                completion(text)
             } else {
-                completion(nil) // Вызываем обработчик с nil, если текст не был введен
+                completion(nil)
             }
         }
         alert.addAction(addAction)
-        
         viewController.present(alert, animated: true, completion: nil)
     }
 
@@ -130,11 +131,11 @@ class MainTableViewController: UITableViewController {
 
 extension MainTableViewController: SkillsViewProtocol {
     func showSkills(_ skills: Set<String>) {
-        print("showSkills")
+        print("VIEW: showSkills")
     }
     
     func showAddSkillAlert() {
-        print("showAddskil")
+        print("VIEW: showAddskil")
     }
     
     

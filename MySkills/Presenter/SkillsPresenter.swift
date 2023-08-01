@@ -19,16 +19,19 @@ class SkillsPresenter: SkillsPresenterProtocol {
     var model: SkillsModelProtocol!
     
     func updateSkills() {
+        print("PRESENTER: updateSkills")
         let skills = model.getAllSkills()
         view?.showSkills(skills)
     }
     
     func addSkillButtonTapped(name: String) {
+        print("PRESENTER: addskills")
         model.addSkill(name)
         updateSkills()
     }
     
     func removeSkillButtonTapped(skill: String) {
+        print("PRESENTER: removeskills")
         model.removeSkill(skill)
         updateSkills()
     }

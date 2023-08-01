@@ -17,14 +17,17 @@ class SkillsModel: SkillsModelProtocol {
     private var skillsSet: Set<String> = ["UIKit", "GCD"]
     
     func getAllSkills() -> Set<String> {
+        print("MODEL: get all")
         return skillsSet
     }
     
     func addSkill(_ skill: String) {
+        print("MODEL: add")
         skillsSet.insert(skill)
     }
     
     func removeSkill(_ skill: String) {
+        print("MODEL: remove")
         skillsSet.remove(skill)
     }
 }
