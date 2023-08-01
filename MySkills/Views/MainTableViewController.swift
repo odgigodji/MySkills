@@ -14,6 +14,8 @@ protocol SkillsViewProtocol: AnyObject {
 
 protocol MainTableViewControllerDelegate: AnyObject {
     func dataDidUpdate(newData: [String])
+    func editingDidTapped()
+    func didPressPlus()
 }
 
 class MainTableViewController: UITableViewController {
@@ -40,12 +42,6 @@ class MainTableViewController: UITableViewController {
         
     }
     
-    func updateData() {
-        let newData = ["New Item 1", "New Item 2", "New Item 3"]
-//        skills =
-//        collectionView.reloadData() // Перезагружаем UICollectionView, чтобы обновить значения во всех ячейках
-        delegate?.dataDidUpdate(newData: newData) // Уведомляем делегата о изменении данных
-    }
     
     // MARK: - Table view data source
 
@@ -83,14 +79,16 @@ class MainTableViewController: UITableViewController {
     @objc func tapButton() {
         print("TAP BUTTON ON VC")
         
-        showAlertWithTextField(title: "Добавление навыка", message: "Введите название навыка которым вы владеете", viewController: self) { text in
-//            print(text!)
-            guard let text = text else {
-               return
-            }
-            self.presenter.addSkillButtonTapped(name: text)
-            self.tableView.reloadData()
-        }
+        delegate?.editingDidTapped()
+        
+//        showAlertWithTextField(title: "Добавление навыка", message: "Введите название навыка которым вы владеете", viewController: self) { text in
+////            print(text!)
+//            guard let text = text else {
+//               return
+//            }
+//            self.presenter.addSkillButtonTapped(name: text)
+//            self.tableView.reloadData()
+//        }
     }
 
     

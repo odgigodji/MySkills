@@ -20,6 +20,15 @@ class SkillCollectionViewCell: UICollectionViewCell {
         return label
     }()
     
+    let crossButton: UIButton = {
+        let button = UIButton()
+        button.backgroundColor = .black
+        button.setBackgroundImage(UIImage(systemName: "delete.left"), for: .normal)
+        button.isUserInteractionEnabled = true
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -37,8 +46,7 @@ class SkillCollectionViewCell: UICollectionViewCell {
         // Настраиваем закругленные углы для ячейки
         layer.cornerRadius = 10
         clipsToBounds = true
-        backgroundColor = .systemGray // Здесь вы можете задать желаемый цвет фона для каждой ячейки в коллекции
-        
+        backgroundColor = .systemGray
         
     }
     

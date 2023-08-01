@@ -9,7 +9,7 @@ import UIKit
 
 class SkillsTableViewCell: UITableViewCell {
     
-    
+    var skillsNames: [String] = []
     static let identifier = "SkillsTableViewCell"
 
     let headerLabel: UILabel = {
@@ -51,7 +51,6 @@ class SkillsTableViewCell: UITableViewCell {
         return collectionView
     }()
     
-    var skillsNames: [String] = []
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -108,13 +107,28 @@ extension SkillsTableViewCell: UICollectionViewDelegateFlowLayout, UICollectionV
         let width = text.size(withAttributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 16)]).width + 20
         return CGSize(width: width, height: 44)
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print(skillsNames[indexPath.row])
+        if skillsNames[indexPath.row] == "+" {
+            print("ADD ELEM")
+        }
+    }
 }
 
 
 extension SkillsTableViewCell: MainTableViewControllerDelegate {
+    func editingDidTapped() {
+        skillsNames.append("+")
+        collectionView.reloadData()
+    }
+    
     func dataDidUpdate(newData: [String]) {
         skillsNames = newData
         collectionView.reloadData()
     }
     
+    func didPressPlus() {
+        
+    }
 }
