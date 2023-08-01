@@ -121,6 +121,13 @@ extension SkillsTableViewCell: UICollectionViewDelegateFlowLayout, UICollectionV
         let width = text.size(withAttributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 16)]).width + 20
         return CGSize(width: width, height: 44)
     }
- 
 }
 
+
+extension SkillsTableViewCell: MainTableViewControllerDelegate {
+    func dataDidUpdate(newData: [String]) {
+        skillsNames = newData
+        collectionView.reloadData()
+    }
+    
+}

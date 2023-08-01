@@ -54,3 +54,5 @@ class SkillCollectionViewCell: UICollectionViewCell {
         return attributes
     }
 }
+
+
