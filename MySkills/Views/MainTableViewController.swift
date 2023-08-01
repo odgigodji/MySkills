@@ -47,6 +47,8 @@ class MainTableViewController: UITableViewController {
         default:
 //        case 1:
             let cell = tableView.dequeueReusableCell(withIdentifier: SkillsTableViewCell.identifier, for: indexPath) as! SkillsTableViewCell
+            cell.data = ["asdf", "21"]
+            
             return cell
 //        default:
 //            print("none")
@@ -70,7 +72,7 @@ class MainTableViewController: UITableViewController {
         switch indexPath.row {
         case 0: return 300
 //        case 1: 400
-        default: return 400
+        default: return 500
         }
     }
 
