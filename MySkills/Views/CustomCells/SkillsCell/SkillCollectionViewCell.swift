@@ -38,6 +38,8 @@ class SkillCollectionViewCell: UICollectionViewCell {
         layer.cornerRadius = 10
         clipsToBounds = true
         backgroundColor = .systemGray // Здесь вы можете задать желаемый цвет фона для каждой ячейки в коллекции
+        
+        
     }
     
     required init?(coder: NSCoder) {

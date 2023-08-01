@@ -1,16 +1,15 @@
 //
-//  CustomCell.swift
+//  infocollectionviewcell.swift
 //  MySkills
 //
 //  Created by Nikita Evdokimov on 01.08.23.
 //
 
-//fix second label lenght
 import UIKit
 
-class InfoTableViewCell: UITableViewCell {
+class InfoCollectionViewCell: UICollectionViewCell {
     
-    static let identifier = "InfoTableViewCell"
+    static let identifier = "InfoCollectionViewCell"
     
     let customImageView: UIImageView = {
         let imageView = UIImageView()
@@ -52,15 +51,13 @@ class InfoTableViewCell: UITableViewCell {
         return imageView
     }()
     
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
+    override init(frame: CGRect) {
+        super.init(frame: frame)
         
         customImageView.image = UIImage(named: "imageName")
         titleLabel.text = "Иванов Иван Иванович"
         firstTextLabel.text = "Миддл опыт более 2х лет, лаодлофвыоа офывдлао жлдфоывладо жфдлыова ждлфовлао"
         secondTextLabel.text = "Ростов на дону"
-        
-        isUserInteractionEnabled = false
         
         addSubview(customImageView)
         addSubview(titleLabel)
@@ -95,17 +92,6 @@ class InfoTableViewCell: UITableViewCell {
             locationTextStackView.centerXAnchor.constraint(equalTo: centerXAnchor),
             locationTextStackView.topAnchor.constraint(equalTo: firstTextLabel.bottomAnchor, constant: 5)
         ])
-        
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapGestureRecognizer:)))
-//        tapGesture.cancelsTouchesInView = false
-        customImageView.isUserInteractionEnabled = true
-        customImageView.addGestureRecognizer(tapGesture)
-    }
-    
-    @objc func imageTapped(tapGestureRecognizer: UITapGestureRecognizer) {
-        // Выполните здесь необходимое действие при нажатии на изображение
-//        let tappedImage = tapGestureRecognizer.view as! UIImageView
-        print("Изображение было нажато!")
     }
     
     required init?(coder: NSCoder) {

@@ -19,19 +19,28 @@ class SkillsTableViewCell: UITableViewCell {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Мои навыки"
         
-//        label.backgroundColor = .blue
+        label.backgroundColor = .blue
         return label
     }()
     
-    let headerImageView: UIImageView = {
-        let imageView = UIImageView(image: UIImage(systemName: "pencil"))
-        imageView.tintColor = .black
-        imageView.contentMode = .scaleAspectFit
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        
-        imageView.backgroundColor = .blue
-        
-        return imageView
+//    let headerImageView: UIImageView = {
+//        let imageView = UIImageView(image: UIImage(systemName: "pencil"))
+//        imageView.tintColor = .black
+//        imageView.contentMode = .scaleAspectFit
+//        imageView.translatesAutoresizingMaskIntoConstraints = false
+//
+//        imageView.backgroundColor = .blue
+//
+//        return imageView
+//    }()
+    
+    let headerImageView: UIButton = {
+        let button = UIButton()
+        button.backgroundColor = .black
+        button.setBackgroundImage(UIImage(systemName: "pencil"), for: .normal)
+        button.isUserInteractionEnabled = true
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
     }()
     
     lazy var collectionView: UICollectionView = {
@@ -48,7 +57,7 @@ class SkillsTableViewCell: UITableViewCell {
         collectionView.dataSource = self
         collectionView.register(SkillCollectionViewCell.self, forCellWithReuseIdentifier: SkillCollectionViewCell.identifier)
         
-//        collectionView.backgroundColor = .yellow
+        collectionView.backgroundColor = .yellow
         
         return collectionView
     }()
@@ -58,28 +67,26 @@ class SkillsTableViewCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
-        isUserInteractionEnabled = true
+//        isUserInteractionEnabled = true
         selectionStyle = .none
         
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapGestureRecognizer:)))
-//        tapGesture.cancelsTouchesInView = false
-        headerImageView.isUserInteractionEnabled = true
-        headerImageView.addGestureRecognizer(tapGesture)
         
-//        backgroundColor = .green
         
+        backgroundColor = .green
+        
+        contentView.addSubview(headerImageView)
         addSubview(headerLabel)
-        addSubview(headerImageView)
         addSubview(collectionView)
         
         NSLayoutConstraint.activate([
             headerLabel.topAnchor.constraint(equalTo: topAnchor, constant: 10),
             headerLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
-            headerLabel.heightAnchor.constraint(equalToConstant: 24),
+            headerLabel.heightAnchor.constraint(equalToConstant: 124),
             
             headerImageView.topAnchor.constraint(equalTo: headerLabel.topAnchor),
             headerImageView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
             headerImageView.heightAnchor.constraint(equalTo: headerLabel.heightAnchor),
+            headerImageView.widthAnchor.constraint(equalTo: headerImageView.heightAnchor),
             
             collectionView.topAnchor.constraint(equalTo: headerLabel.bottomAnchor, constant: 10),
             collectionView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
@@ -95,11 +102,6 @@ class SkillsTableViewCell: UITableViewCell {
     }
     
     
-    @objc func imageTapped(tapGestureRecognizer: UITapGestureRecognizer) {
-        // Выполните здесь необходимое действие при нажатии на изображение
-        let tappedImage = tapGestureRecognizer.view as! UIImageView
-        print("Изображение было нажато!")
-    }
 }
 
 

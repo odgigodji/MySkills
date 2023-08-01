@@ -18,13 +18,18 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window = UIWindow(windowScene: windowScene)
         window?.windowScene = windowScene
         
-        assembly.createMainPresenter()
+//        assembly.createMainPresenter()
+        
 //        window?.rootViewController = assembly.view
 //        window?.rootViewController = MainViewController()
 //        window?.rootViewController = assembly.mainView
+        
         let nc = UINavigationController(rootViewController: MainTableViewController())
+        
+//        let nc = UINavigationController(rootViewController: SimpleCollectionViewController())
         window?.rootViewController = nc
         
+//        window?.rootViewController = CollectionViewController()
         
         window?.makeKeyAndVisible()
     }

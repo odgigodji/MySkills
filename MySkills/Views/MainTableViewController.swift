@@ -17,6 +17,9 @@ class MainTableViewController: UITableViewController {
         tableView.register(InfoTableViewCell.self, forCellReuseIdentifier: InfoTableViewCell.identifier)
         tableView.register(SkillsTableViewCell.self, forCellReuseIdentifier: SkillsTableViewCell.identifier)
         
+        tableView.isUserInteractionEnabled = true
+//        tableView.selectionStyle = .none
+//        tableView.sele
         
         tableView.separatorStyle = .none // Изменим стиль разделителя на "singleLine"
         tableView.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0) // Установим нулевой отступ разделител
@@ -47,16 +50,34 @@ class MainTableViewController: UITableViewController {
         default:
 //        case 1:
             let cell = tableView.dequeueReusableCell(withIdentifier: SkillsTableViewCell.identifier, for: indexPath) as! SkillsTableViewCell
+            
+//            let tapGesture = UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapGestureRecognizer: tapGesture)
+//            tapGesture.cancelsTouchesInView = false
+//            cell.headerImageView.isUserInteractionEnabled = true
+//            cell.headerImageView.addGestureRecognizer(tapGesture)
+            cell.isUserInteractionEnabled = true
+            
+            cell.headerImageView.addTarget(self, action: #selector(tapButton), for: .touchUpInside)
+            
             cell.skillsNames = ["asdf", "21", "aasdkfjkjl", "kjkj", "asiii", "1234", "iii", "hfhasdf"]
             
             return cell
 //        default:
 //            print("none")
-            
         }
         
 //        return cell
     }
+    
+    @objc func tapButton() {
+        print("HER")
+    }
+    
+//    @objc func imageTapped(tapGestureRecognizer: UITapGestureRecognizer) {
+//        // Выполните здесь необходимое действие при нажатии на изображение
+////        let tappedImage = tapGestureRecognizer.view as! UIImageView
+//        print("Изображение было нажато!")
+//    }
     
     func setupCustomTitle() {
         let titleLabel = UILabel()
