@@ -112,6 +112,9 @@ extension SkillsTableViewCell: UICollectionViewDelegateFlowLayout, UICollectionV
         } else {
             cell.titleLabel.text = skillsNames[indexPath.item]
         }
+        if cell.titleLabel.text == "+ ⛌" {
+            cell.titleLabel.text = "+"
+        }
         return cell
     }
     
