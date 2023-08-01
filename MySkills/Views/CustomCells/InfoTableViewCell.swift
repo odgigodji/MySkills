@@ -79,10 +79,10 @@ class InfoTableViewCell: UITableViewCell {
         
         addSubview(locationTextStackView)
         NSLayoutConstraint.activate([
-            customImageView.topAnchor.constraint(equalTo: topAnchor, constant: 10),
+            customImageView.topAnchor.constraint(equalTo: topAnchor, constant: 20),
             customImageView.centerXAnchor.constraint(equalTo: centerXAnchor),
-            customImageView.widthAnchor.constraint(equalToConstant: 100), // Ширина круглой картинки
-            customImageView.heightAnchor.constraint(equalToConstant: 100), // Высота круглой картинки
+            customImageView.widthAnchor.constraint(equalToConstant: 120), // Ширина круглой картинки
+            customImageView.heightAnchor.constraint(equalTo: customImageView.widthAnchor), // Высота круглой картинки
             
             titleLabel.topAnchor.constraint(equalTo: customImageView.bottomAnchor, constant: 10),
             titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),

@@ -67,7 +67,11 @@ class MainTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        400
+        switch indexPath.row {
+        case 0: return 300
+//        case 1: 400
+        default: return 400
+        }
     }
 
     /*
