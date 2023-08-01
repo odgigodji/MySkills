@@ -12,9 +12,13 @@ protocol SkillsViewProtocol: AnyObject {
     func showAddSkillAlert()
 }
 
+protocol SkillsTableViewCellDelegate: AnyObject {
+    func didSelectButton(in cell: SkillsTableViewCell)
+}
+
 class MainTableViewController: UITableViewController {
     
-//    var skills = Set<String>()
+    var skills = Set<String>()
     var presenter: SkillsPresenter!
 
     override func viewDidLoad() {
@@ -30,7 +34,7 @@ class MainTableViewController: UITableViewController {
         tableView.separatorStyle = .none
         tableView.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         
-//        skills =
+        skills = presenter.model.getAllSkills()
         
     }
     
@@ -48,31 +52,22 @@ class MainTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        // Установка данных для ячейки
-        
         switch indexPath.row {
         case 0:
-            //конструктор
             let cell = tableView.dequeueReusableCell(withIdentifier: InfoTableViewCell.identifier, for: indexPath) as! InfoTableViewCell
-
             return cell
+            
         default:
-            //        case 1:
             let cell = tableView.dequeueReusableCell(withIdentifier: SkillsTableViewCell.identifier, for: indexPath) as! SkillsTableViewCell
             
             cell.isUserInteractionEnabled = true
-            
             cell.headerImageView.addTarget(self, action: #selector(tapButton), for: .touchUpInside)
+            cell.skillsNames = Array(skills)
             
-            cell.skillsNames = Array(presenter.model.getAllSkills())
-//            cell.skillsNames = ["asdf", "21", "aasdkfjkjl", "kjkj", "asiii", "1234", "iii", "hfhasdf"]
+            print("VIEW: Skildls name \(skills)")
             
             return cell
-//        default:
-//            print("none")
         }
-        
-//        return cell
     }
     
     @objc func tapButton() {
@@ -80,6 +75,7 @@ class MainTableViewController: UITableViewController {
         showAlertWithTextField(title: "Добавление навыка", message: "Введите название навыка которым вы владеете", viewController: self) { text in
 //            print(text!)
             self.presenter.addSkillButtonTapped(name: text!)
+            self.tableView.reloadData()
         }
     }
 
@@ -132,10 +128,12 @@ class MainTableViewController: UITableViewController {
 extension MainTableViewController: SkillsViewProtocol {
     func showSkills(_ skills: Set<String>) {
         print("VIEW: showSkills")
+        self.skills = presenter.model.getAllSkills()
+        tableView.reloadData()
     }
     
     func showAddSkillAlert() {
-        print("VIEW: showAddskil")
+        print("VIEW: showAddskilALERT")
     }
     
     

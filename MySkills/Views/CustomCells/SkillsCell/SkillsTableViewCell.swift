@@ -9,6 +9,8 @@ import UIKit
 
 class SkillsTableViewCell: UITableViewCell {
     
+//    weak var delegate: SkillsDelegate!
+    
     static let identifier = "SkillsTableViewCell"
 
     let headerLabel: UILabel = {
@@ -70,8 +72,6 @@ class SkillsTableViewCell: UITableViewCell {
 //        isUserInteractionEnabled = true
         selectionStyle = .none
         
-        
-        
         backgroundColor = .green
         
         contentView.addSubview(headerImageView)
@@ -106,6 +106,7 @@ class SkillsTableViewCell: UITableViewCell {
 
 extension SkillsTableViewCell: UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+//        print("STVC: \(skillsNames)")
         return skillsNames.count
     }
     
