@@ -31,6 +31,7 @@ class MainTableViewController: UITableViewController {
 
         tableView.register(InfoTableViewCell.self, forCellReuseIdentifier: InfoTableViewCell.identifier)
         tableView.register(SkillsTableViewCell.self, forCellReuseIdentifier: SkillsTableViewCell.identifier)
+        tableView.register(AboutTableViewCell.self, forCellReuseIdentifier: AboutTableViewCell.identifier)
         
         tableView.isUserInteractionEnabled = true
         
@@ -51,7 +52,7 @@ class MainTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 2
+        return 3
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -61,7 +62,7 @@ class MainTableViewController: UITableViewController {
             let cell = tableView.dequeueReusableCell(withIdentifier: InfoTableViewCell.identifier, for: indexPath) as! InfoTableViewCell
             return cell
             
-        default:
+        case 1:
             let cell = tableView.dequeueReusableCell(withIdentifier: SkillsTableViewCell.identifier, for: indexPath) as! SkillsTableViewCell
             delegate = cell
             cell.delegate = self
@@ -72,6 +73,10 @@ class MainTableViewController: UITableViewController {
             
             print("VIEW: Skildls name \(skills)")
             
+            return cell
+            
+        default:
+            let cell = tableView.dequeueReusableCell(withIdentifier: AboutTableViewCell.identifier, for: indexPath) as! AboutTableViewCell
             return cell
         }
     }
@@ -95,12 +100,12 @@ class MainTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch indexPath.row {
-        case 0: return 300
-//        case 1: 400
-        default: return 500
+        case 0: return 250
+        case 1: return 300
+        default: return 200
         }
     }
- 
+    
     
     //MARK: Logic
     func showAlertWithTextField(title: String, message: String, viewController: UIViewController, completion: @escaping (String?) -> Void) {
@@ -118,6 +123,7 @@ class MainTableViewController: UITableViewController {
         let addAction = UIAlertAction(title: "Добавить", style: .default) { _ in
             if let textField = alert.textFields?.first, let text = textField.text {
                 completion(text)
+                self.delegate?.editingDidTapped()
             } else {
                 completion(nil)
             }

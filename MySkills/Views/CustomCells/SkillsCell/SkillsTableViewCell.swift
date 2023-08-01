@@ -100,12 +100,12 @@ class SkillsTableViewCell: UITableViewCell {
 
 extension SkillsTableViewCell: UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-//        print("STVC: \(skillsNames)")
         return skillsNames.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SkillCollectionViewCell.identifier, for: indexPath) as! SkillCollectionViewCell
+        
         
         if editMode == true {
             cell.titleLabel.text = skillsNames[indexPath.item] + " ⛌"
@@ -141,8 +141,9 @@ extension SkillsTableViewCell: MainTableViewControllerDelegate {
                     string == "+"
                 }
             }
-            collectionView.reloadData()
+//            skillsNames.append("+")
             editMode = false
+            collectionView.reloadData()
         } else {
             settingsButton.setBackgroundImage(UIImage(systemName: "checkmark.circle"), for: .normal)
             if !skillsNames.contains("+") {

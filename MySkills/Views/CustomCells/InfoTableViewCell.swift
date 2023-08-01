@@ -16,7 +16,7 @@ class InfoTableViewCell: UITableViewCell {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
-        imageView.layer.cornerRadius = 50
+        imageView.layer.cornerRadius = 60
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
@@ -55,9 +55,9 @@ class InfoTableViewCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
-        customImageView.image = UIImage(named: "imageName")
+        customImageView.image = UIImage(named: "imageName 1")
         titleLabel.text = "Иванов Иван Иванович"
-        firstTextLabel.text = "Миддл опыт более 2х лет, лаодлофвыоа офывдлао жлдфоывладо жфдлыова ждлфовлао"
+        firstTextLabel.text = "Миддл опыт более 2х лет, работал над мобильным банком в Тинькове"
         secondTextLabel.text = "Ростов на дону"
         
         isUserInteractionEnabled = false
@@ -96,17 +96,8 @@ class InfoTableViewCell: UITableViewCell {
             locationTextStackView.topAnchor.constraint(equalTo: firstTextLabel.bottomAnchor, constant: 5)
         ])
         
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapGestureRecognizer:)))
-//        tapGesture.cancelsTouchesInView = false
-        customImageView.isUserInteractionEnabled = true
-        customImageView.addGestureRecognizer(tapGesture)
     }
     
-    @objc func imageTapped(tapGestureRecognizer: UITapGestureRecognizer) {
-        // Выполните здесь необходимое действие при нажатии на изображение
-//        let tappedImage = tapGestureRecognizer.view as! UIImageView
-        print("Изображение было нажато!")
-    }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")

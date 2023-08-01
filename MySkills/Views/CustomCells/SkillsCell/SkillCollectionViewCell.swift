@@ -14,42 +14,29 @@ class SkillCollectionViewCell: UICollectionViewCell {
     let titleLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
-        label.textColor = .white
+        label.textColor = .black
         label.font = UIFont.systemFont(ofSize: 16)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
-//    let crossButton: UIButton = {
-//        let button = UIButton()
-////        button.isHidden = true
-//        button.setBackgroundImage(UIImage(systemName: "delete.left"), for: .normal)
-//        button.isUserInteractionEnabled = true
-//        button.translatesAutoresizingMaskIntoConstraints = false
-//        button.backgroundColor = .black
-//        return button
-//    }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         
         addSubview(titleLabel)
-//        addSubview(crossButton)
         
         NSLayoutConstraint.activate([
             titleLabel.topAnchor.constraint(equalTo: topAnchor),
             titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
             titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
             titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor),
-            
-//            crossButton.topAnchor.constraint(equalTo: topAnchor),
-//            crossButton.leadingAnchor.constraint(equalTo: titleLabel.trailingAnchor, constant: 5),
-//            crossButton.bottomAnchor.constraint(equalTo: bottomAnchor)
+
         ])
         
         layer.cornerRadius = 10
         clipsToBounds = true
-        backgroundColor = .systemGray
+        backgroundColor = .systemGray5
     }
     
     required init?(coder: NSCoder) {
