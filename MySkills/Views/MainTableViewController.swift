@@ -79,9 +79,7 @@ class MainTableViewController: UITableViewController {
     @objc func tapButton() {
         print("TAP BUTTON ON VC")
         
-        
         delegate?.editingDidTapped()
-        
 
     }
 

@@ -15,7 +15,7 @@ class MainViewController: UIViewController {
 //        print("tadam")
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        view.backgroundColor = .yellow
+//        view.backgroundColor = .yellow
         
         let logoImageView = UIImageView(image: UIImage(named: "your_logo_image_name"))
         logoImageView.contentMode = .scaleAspectFit // Установите режим отображения по необходимости

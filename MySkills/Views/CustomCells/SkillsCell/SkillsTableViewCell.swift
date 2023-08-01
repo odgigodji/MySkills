@@ -27,13 +27,13 @@ class SkillsTableViewCell: UITableViewCell {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Мои навыки"
         
-        label.backgroundColor = .blue
+//        label.backgroundColor = .blue
         return label
     }()
     
     let settingsButton: UIButton = {
         let button = UIButton()
-        button.backgroundColor = .black
+//        button.backgroundColor = .black
         button.setBackgroundImage(UIImage(systemName: "pencil"), for: .normal)
         button.isUserInteractionEnabled = true
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -54,7 +54,7 @@ class SkillsTableViewCell: UITableViewCell {
         collectionView.dataSource = self
         collectionView.register(SkillCollectionViewCell.self, forCellWithReuseIdentifier: SkillCollectionViewCell.identifier)
         
-        collectionView.backgroundColor = .yellow
+//        collectionView.backgroundColor = .yellow
         
         return collectionView
     }()
@@ -66,7 +66,7 @@ class SkillsTableViewCell: UITableViewCell {
 //        isUserInteractionEnabled = true
         selectionStyle = .none
         
-        backgroundColor = .green
+//        backgroundColor = .green
         
         contentView.addSubview(settingsButton)
         addSubview(headerLabel)
@@ -106,6 +106,7 @@ extension SkillsTableViewCell: UICollectionViewDelegateFlowLayout, UICollectionV
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SkillCollectionViewCell.identifier, for: indexPath) as! SkillCollectionViewCell
+        
         if editMode == true {
             cell.titleLabel.text = skillsNames[indexPath.item] + " ⛌"
         } else {
@@ -139,8 +140,8 @@ extension SkillsTableViewCell: MainTableViewControllerDelegate {
                 skillsNames.removeAll { string in
                     string == "+"
                 }
-                collectionView.reloadData()
             }
+            collectionView.reloadData()
             editMode = false
         } else {
             settingsButton.setBackgroundImage(UIImage(systemName: "checkmark.circle"), for: .normal)

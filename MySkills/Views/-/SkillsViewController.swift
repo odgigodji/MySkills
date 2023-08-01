@@ -19,7 +19,7 @@ class SkillsViewController: UIViewController, SkillsViewProtocol {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .green
+//        view.backgroundColor = .green
 //        presenter.viewDidLoad()
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(viewTapped))
