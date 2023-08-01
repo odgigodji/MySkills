@@ -7,10 +7,10 @@
 
 import UIKit
 
-protocol SkillsViewProtocol: AnyObject {
-    func showSkills(_ skills: Set<String>)
-    func showAddSkillAlert()
-}
+//protocol SkillsViewProtocol: AnyObject {
+//    func showSkills(_ skills: Set<String>)
+//    func showAddSkillAlert()
+//}
 
 class SkillsViewController: UIViewController, SkillsViewProtocol {
     

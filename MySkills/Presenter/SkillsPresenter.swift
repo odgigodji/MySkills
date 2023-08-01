@@ -15,12 +15,12 @@ protocol SkillsPresenterProtocol {
 
 class SkillsPresenter: SkillsPresenterProtocol {
     
-    weak var skillsView: SkillsViewProtocol!
+    weak var view: SkillsViewProtocol!
     var model: SkillsModelProtocol!
     
     func updateSkills() {
         let skills = model.getAllSkills()
-        skillsView?.showSkills(skills)
+        view?.showSkills(skills)
     }
     
     func addSkillButtonTapped(name: String) {

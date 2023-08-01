@@ -7,7 +7,14 @@
 
 import UIKit
 
+protocol SkillsViewProtocol: AnyObject {
+    func showSkills(_ skills: Set<String>)
+    func showAddSkillAlert()
+}
+
 class MainTableViewController: UITableViewController {
+    
+    var presenter: SkillsPresenter!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -118,5 +125,17 @@ class MainTableViewController: UITableViewController {
         viewController.present(alert, animated: true, completion: nil)
     }
 
+}
 
+
+extension MainTableViewController: SkillsViewProtocol {
+    func showSkills(_ skills: Set<String>) {
+        print("showSkills")
+    }
+    
+    func showAddSkillAlert() {
+        print("showAddskil")
+    }
+    
+    
 }
