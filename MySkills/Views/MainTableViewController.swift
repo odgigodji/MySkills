@@ -71,7 +71,7 @@ class MainTableViewController: UITableViewController {
             delegate = cell
             
             cell.isUserInteractionEnabled = true
-            cell.headerImageView.addTarget(self, action: #selector(tapButton), for: .touchUpInside)
+            cell.settingsButton.addTarget(self, action: #selector(tapButton), for: .touchUpInside)
             cell.skillsNames = Array(skills)
             
             print("VIEW: Skildls name \(skills)")
@@ -85,7 +85,10 @@ class MainTableViewController: UITableViewController {
         
         showAlertWithTextField(title: "Добавление навыка", message: "Введите название навыка которым вы владеете", viewController: self) { text in
 //            print(text!)
-            self.presenter.addSkillButtonTapped(name: text!)
+            guard let text = text else {
+               return
+            }
+            self.presenter.addSkillButtonTapped(name: text)
             self.tableView.reloadData()
         }
     }

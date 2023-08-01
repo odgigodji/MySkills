@@ -9,13 +9,11 @@ import UIKit
 
 class SkillsTableViewCell: UITableViewCell {
     
-//    weak var delegate: SkillsDelegate!
     
     static let identifier = "SkillsTableViewCell"
 
     let headerLabel: UILabel = {
         let label = UILabel()
-        //            label.textAlignment = .center
         label.textColor = .black
         label.font = UIFont.boldSystemFont(ofSize: 18)
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -25,18 +23,7 @@ class SkillsTableViewCell: UITableViewCell {
         return label
     }()
     
-//    let headerImageView: UIImageView = {
-//        let imageView = UIImageView(image: UIImage(systemName: "pencil"))
-//        imageView.tintColor = .black
-//        imageView.contentMode = .scaleAspectFit
-//        imageView.translatesAutoresizingMaskIntoConstraints = false
-//
-//        imageView.backgroundColor = .blue
-//
-//        return imageView
-//    }()
-    
-    let headerImageView: UIButton = {
+    let settingsButton: UIButton = {
         let button = UIButton()
         button.backgroundColor = .black
         button.setBackgroundImage(UIImage(systemName: "pencil"), for: .normal)
@@ -74,19 +61,19 @@ class SkillsTableViewCell: UITableViewCell {
         
         backgroundColor = .green
         
-        contentView.addSubview(headerImageView)
+        contentView.addSubview(settingsButton)
         addSubview(headerLabel)
         addSubview(collectionView)
         
         NSLayoutConstraint.activate([
             headerLabel.topAnchor.constraint(equalTo: topAnchor, constant: 10),
             headerLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
-            headerLabel.heightAnchor.constraint(equalToConstant: 124),
+            headerLabel.heightAnchor.constraint(equalToConstant: 24),
             
-            headerImageView.topAnchor.constraint(equalTo: headerLabel.topAnchor),
-            headerImageView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
-            headerImageView.heightAnchor.constraint(equalTo: headerLabel.heightAnchor),
-            headerImageView.widthAnchor.constraint(equalTo: headerImageView.heightAnchor),
+            settingsButton.topAnchor.constraint(equalTo: headerLabel.topAnchor),
+            settingsButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
+            settingsButton.heightAnchor.constraint(equalTo: headerLabel.heightAnchor),
+            settingsButton.widthAnchor.constraint(equalTo: settingsButton.heightAnchor),
             
             collectionView.topAnchor.constraint(equalTo: headerLabel.bottomAnchor, constant: 10),
             collectionView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
