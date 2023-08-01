@@ -11,11 +11,32 @@ class SkillsTableViewCell: UITableViewCell {
     
     static let identifier = "SkillsTableViewCell"
 
+    let headerLabel: UILabel = {
+        let label = UILabel()
+        //            label.textAlignment = .center
+        label.textColor = .black
+        label.font = UIFont.boldSystemFont(ofSize: 18)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "Мои навыки"
+        
+//        label.backgroundColor = .blue
+        return label
+    }()
+    
+    let headerImageView: UIImageView = {
+        let imageView = UIImageView(image: UIImage(systemName: "pencil.line"))
+        imageView.tintColor = .black
+        imageView.contentMode = .scaleAspectFit
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        return imageView
+    }()
+    
     lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
-        layout.minimumInteritemSpacing = 5 // Убираем горизонтальные отступы между ячейками
-        layout.minimumLineSpacing = 10 // Задаем вертикальные отступы между ячейками
+        layout.minimumInteritemSpacing = 5
+        layout.minimumLineSpacing = 10
+        
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.backgroundColor = .clear
@@ -23,26 +44,38 @@ class SkillsTableViewCell: UITableViewCell {
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.register(SkillCollectionViewCell.self, forCellWithReuseIdentifier: SkillCollectionViewCell.identifier)
+        
+//        collectionView.backgroundColor = .yellow
+        
         return collectionView
     }()
     
-    
-    var data: [String] = []
+    var skillsNames: [String] = []
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         isUserInteractionEnabled = false
-        // Добавляем подвиды (subviews) в ячейку
+//        backgroundColor = .green
+        
+        addSubview(headerLabel)
+        addSubview(headerImageView)
         addSubview(collectionView)
         
-        // Настраиваем ограничения (constraints) для collectionView
         NSLayoutConstraint.activate([
-            collectionView.topAnchor.constraint(equalTo: topAnchor, constant: 10),
+            headerLabel.topAnchor.constraint(equalTo: topAnchor, constant: 10),
+            headerLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
+            headerLabel.heightAnchor.constraint(equalToConstant: 24),
+            
+            headerImageView.topAnchor.constraint(equalTo: headerLabel.topAnchor),
+            headerImageView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
+            headerImageView.heightAnchor.constraint(equalTo: headerLabel.heightAnchor),
+            
+            collectionView.topAnchor.constraint(equalTo: headerLabel.bottomAnchor, constant: 10),
             collectionView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
             collectionView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
             collectionView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -10),
-            collectionView.heightAnchor.constraint(equalToConstant: 100) // Задайте желаемую высоту коллекции
+            collectionView.heightAnchor.constraint(equalToConstant: 100)
         ])
     }
     
@@ -53,22 +86,20 @@ class SkillsTableViewCell: UITableViewCell {
 
 extension SkillsTableViewCell: UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return data.count
+        return skillsNames.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SkillCollectionViewCell.identifier, for: indexPath) as! SkillCollectionViewCell
-        // Здесь вы можете настроить данные для каждой ячейки в коллекции
-        cell.titleLabel.text = data[indexPath.item]
+        cell.titleLabel.text = skillsNames[indexPath.item]
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let text = data[indexPath.item]
-        let width = text.size(withAttributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 16)]).width + 20 // 20 - для добавления небольшого отступа
-        return CGSize(width: width, height: 44) // Задайте желаемую высоту ячейки
+        let text = skillsNames[indexPath.item]
+        let width = text.size(withAttributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 16)]).width + 20
+        return CGSize(width: width, height: 44)
     }
-    
-    // ... Добавьте нужные методы UICollectionViewDelegateFlowLayout, если необходимо
+ 
 }
 
