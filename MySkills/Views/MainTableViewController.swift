@@ -11,10 +11,12 @@ class MainTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        setupCustomTitle()
 
         tableView.register(InfoTableViewCell.self, forCellReuseIdentifier: InfoTableViewCell.identifier)
-//        tableView.backgroundColor = .white
-        setupCustomTitle()
+        tableView.register(SkillsTableViewCell.self, forCellReuseIdentifier: SkillsTableViewCell.identifier)
+        
         
         tableView.separatorStyle = .none // Изменим стиль разделителя на "singleLine"
         tableView.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0) // Установим нулевой отступ разделител
@@ -29,26 +31,29 @@ class MainTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 1
+        return 2
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: InfoTableViewCell.identifier, for: indexPath) as! InfoTableViewCell
         
         // Установка данных для ячейки
+        
         switch indexPath.row {
         case 0:
-            cell.customImageView.image = UIImage(named: "imageName")
-            cell.titleLabel.text = "Иванов Иван Иванович"
-            cell.firstTextLabel.text = "Миддл опыт более 2х лет"
-            cell.secondTextLabel.text = "Ростов на дону"
-        case 1:
-            cell.textLabel?.text = "test 1"
+            //конструктор
+            let cell = tableView.dequeueReusableCell(withIdentifier: InfoTableViewCell.identifier, for: indexPath) as! InfoTableViewCell
+
+            return cell
         default:
-            cell.textLabel?.text = "test"
+//        case 1:
+            let cell = tableView.dequeueReusableCell(withIdentifier: SkillsTableViewCell.identifier, for: indexPath) as! SkillsTableViewCell
+            return cell
+//        default:
+//            print("none")
+            
         }
         
-        return cell
+//        return cell
     }
     
     func setupCustomTitle() {
@@ -59,6 +64,10 @@ class MainTableViewController: UITableViewController {
         titleLabel.sizeToFit()
         
         navigationItem.titleView = titleLabel
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        400
     }
 
     /*

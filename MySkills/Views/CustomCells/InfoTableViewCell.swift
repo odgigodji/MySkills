@@ -5,8 +5,7 @@
 //  Created by Nikita Evdokimov on 01.08.23.
 //
 
-import UIKit
-
+//fix second label lenght
 import UIKit
 
 class InfoTableViewCell: UITableViewCell {
@@ -33,6 +32,7 @@ class InfoTableViewCell: UITableViewCell {
     let firstTextLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
+        label.numberOfLines = 2
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -40,6 +40,7 @@ class InfoTableViewCell: UITableViewCell {
     let secondTextLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
+        label.numberOfLines = 1
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -53,6 +54,13 @@ class InfoTableViewCell: UITableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        
+        customImageView.image = UIImage(named: "imageName")
+        titleLabel.text = "Иванов Иван Иванович"
+        firstTextLabel.text = "Миддл опыт более 2х лет, лаодлофвыоа офывдлао жлдфоывладо жфдлыова ждлфовлао"
+        secondTextLabel.text = "Ростов на дону"
+        
+        isUserInteractionEnabled = false
         
         addSubview(customImageView)
         addSubview(titleLabel)

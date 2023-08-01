@@ -18,6 +18,7 @@
 		FA46D31E2A7914810020BC65 /* SkillsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA46D31D2A7914810020BC65 /* SkillsViewController.swift */; };
 		FA46D3202A7924850020BC65 /* MainTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA46D31F2A7924840020BC65 /* MainTableViewController.swift */; };
 		FA46D3222A792C1B0020BC65 /* InfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA46D3212A792C1B0020BC65 /* InfoTableViewCell.swift */; };
+		FA46D3252A793AA30020BC65 /* SkillsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA46D3242A793AA30020BC65 /* SkillsTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		FA46D31D2A7914810020BC65 /* SkillsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillsViewController.swift; sourceTree = "<group>"; };
 		FA46D31F2A7924840020BC65 /* MainTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTableViewController.swift; sourceTree = "<group>"; };
 		FA46D3212A792C1B0020BC65 /* InfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoTableViewCell.swift; sourceTree = "<group>"; };
+		FA46D3242A793AA30020BC65 /* SkillsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillsTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,7 +83,7 @@
 				FA46D3032A7900BF0020BC65 /* MainViewController.swift */,
 				FA46D31D2A7914810020BC65 /* SkillsViewController.swift */,
 				FA46D31F2A7924840020BC65 /* MainTableViewController.swift */,
-				FA46D3212A792C1B0020BC65 /* InfoTableViewCell.swift */,
+				FA46D3232A7939780020BC65 /* CustomCells */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -112,6 +114,15 @@
 				FA46D31B2A790B440020BC65 /* SkillsManager.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		FA46D3232A7939780020BC65 /* CustomCells */ = {
+			isa = PBXGroup;
+			children = (
+				FA46D3212A792C1B0020BC65 /* InfoTableViewCell.swift */,
+				FA46D3242A793AA30020BC65 /* SkillsTableViewCell.swift */,
+			);
+			path = CustomCells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -187,6 +198,7 @@
 				FA46D3162A79031D0020BC65 /* SkillsPresenter.swift in Sources */,
 				FA46D31C2A790B440020BC65 /* SkillsManager.swift in Sources */,
 				FA46D3042A7900BF0020BC65 /* MainViewController.swift in Sources */,
+				FA46D3252A793AA30020BC65 /* SkillsTableViewCell.swift in Sources */,
 				FA46D3142A7902980020BC65 /* Assembly.swift in Sources */,
 				FA46D3222A792C1B0020BC65 /* InfoTableViewCell.swift in Sources */,
 				FA46D3202A7924850020BC65 /* MainTableViewController.swift in Sources */,
