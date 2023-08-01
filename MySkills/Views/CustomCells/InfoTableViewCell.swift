@@ -82,7 +82,7 @@ class InfoTableViewCell: UITableViewCell {
             customImageView.topAnchor.constraint(equalTo: topAnchor, constant: 20),
             customImageView.centerXAnchor.constraint(equalTo: centerXAnchor),
             customImageView.widthAnchor.constraint(equalToConstant: 120), // Ширина круглой картинки
-            customImageView.heightAnchor.constraint(equalTo: customImageView.widthAnchor), // Высота круглой картинки
+            customImageView.heightAnchor.constraint(equalTo: customImageView.widthAnchor),
             
             titleLabel.topAnchor.constraint(equalTo: customImageView.bottomAnchor, constant: 10),
             titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),

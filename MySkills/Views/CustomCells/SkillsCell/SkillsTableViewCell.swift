@@ -24,10 +24,13 @@ class SkillsTableViewCell: UITableViewCell {
     }()
     
     let headerImageView: UIImageView = {
-        let imageView = UIImageView(image: UIImage(systemName: "pencil.line"))
+        let imageView = UIImageView(image: UIImage(systemName: "pencil"))
         imageView.tintColor = .black
         imageView.contentMode = .scaleAspectFit
         imageView.translatesAutoresizingMaskIntoConstraints = false
+        
+        imageView.backgroundColor = .blue
+        
         return imageView
     }()
     
@@ -55,7 +58,14 @@ class SkillsTableViewCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
-        isUserInteractionEnabled = false
+        isUserInteractionEnabled = true
+        selectionStyle = .none
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapGestureRecognizer:)))
+//        tapGesture.cancelsTouchesInView = false
+        headerImageView.isUserInteractionEnabled = true
+        headerImageView.addGestureRecognizer(tapGesture)
+        
 //        backgroundColor = .green
         
         addSubview(headerLabel)
@@ -75,14 +85,23 @@ class SkillsTableViewCell: UITableViewCell {
             collectionView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
             collectionView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
             collectionView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -10),
-            collectionView.heightAnchor.constraint(equalToConstant: 100)
+//            collectionView.heightAnchor.constraint(equalToConstant: 100)
         ])
+        
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    
+    @objc func imageTapped(tapGestureRecognizer: UITapGestureRecognizer) {
+        // Выполните здесь необходимое действие при нажатии на изображение
+        let tappedImage = tapGestureRecognizer.view as! UIImageView
+        print("Изображение было нажато!")
+    }
 }
+
 
 extension SkillsTableViewCell: UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
